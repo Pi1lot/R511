@@ -1,0 +1,14 @@
+---
+router:
+  nom: AS1
+  interface 1:
+    name: eth0
+    ip: 172.25.5.172
+    subnet: 255.255.0.0
+    mac: 65:a6:f1:14:67:f2
+  interface 2:
+    name: eth1
+    ip: 172.25.5.173
+    subnet: 255.255.0.0
+    mac: 65:a6:f1:14:77:d2
+protocols: bgp
