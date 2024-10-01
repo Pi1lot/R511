@@ -1,0 +1,9 @@
+1. Gestion des images
+a. docker pull hello-world
+b. La commande est docker images, avec -q on obtient uniquement l'ID de l'image
+c. Cela permet de savoir la release utilisée
+d. Il s'agit de la commande docker rmi
+
+2. Gestion des conteneurs
+a. docker run hello-world
+b. docker run -it python:slim, il faut sortir du terminal en faisant Ctrl-D
