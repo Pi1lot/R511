@@ -25,3 +25,4 @@ https://docs.docker.com/engine/install/debian/#install-using-the-repository
 
 docker compose up -> permet de lire la configuration décrite dans le fichier compose.yaml
 docker compose up -d -> permet de libérer le terminal
+docker compose logs
