@@ -7,3 +7,8 @@ d. Il s'agit de la commande docker rmi
 2. Gestion des conteneurs
 a. docker run hello-world
 b. docker run -it python:slim, il faut sortir du terminal en faisant Ctrl-D
+c. On peut vérifier en faisant echo $MESSAGE dans la console du conteneur
+d. docker run -v /home/toto/shared:/etc -it alpine:latest
+e. Oui, car il devient persistant sur le système hôte
+f. docker run --name apache -p 8080:80  httpd:latest #8080 = port hôte, 80 = port conteneur
+g. Il s'agit de l'option -d, pour "detached"
