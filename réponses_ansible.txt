@@ -1,0 +1,35 @@
+
+Question 1:
+ansible -i "node2," all -m ping -k -u toto
+Résultat obtenu:
+node2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.11"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+
+
+Question 2:
+ansible -i "node2," all -m command -a "uptime" -k -u toto
+Résultat obtenu:
+node2 | CHANGED | rc=0 >>
+ 16:40:20 up 55 min,  2 users,  load average: 0,00, 0,01, 0,00
+
+ansible -i "node2," all -m command -a "ls" -k -u toto
+Résultat obtenu:
+node2 | CHANGED | rc=0 >>
+Bureau
+Documents
+Images
+Modèles
+Musique
+Public
+Téléchargements
+Vidéos
+
+ansible -i "node2," all -m command -a "pwd" -k -u toto
+node2 | CHANGED | rc=0 >>
+/home/toto
+
