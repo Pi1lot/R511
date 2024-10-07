@@ -1,0 +1,10 @@
+---
+# ansible-playbook -i inventory.yml my-playbook.yml -k
+- name: Mon playbook
+  hosts: all
+  remote_user: toto
+
+  tasks:
+  - name: je debug
+    debug:
+      msg: "La valeur de la variable est {{ var1 }}"
