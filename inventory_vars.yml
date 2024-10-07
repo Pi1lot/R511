@@ -1,0 +1,33 @@
+# ansible -i inventory.yml all -m debug -a 'msg={{ var1 }}'
+webserver:
+  hosts:
+    node2:
+    node3:
+  vars:
+   var1: "Ici c’est le groupe des serveurs web"
+dbserver:
+  vars:
+   var1: "Ici c’est le groupe des serveurs de base de données"
+  hosts:
+    node4:
+    node5:
+      vars:
+       var1: "Ici c’est le noeud 5"
+appdocker:
+  hosts:
+    node6:
+    node7:
+common:
+  children:
+    webserver:
+    dbserver:
+    appdocker:
+  vars:
+   var1: "Ici c’est le groupe common"
+nocommon:
+  hosts:
+    node8:
+    node9:
+    node10:
+  vars:
+   var1: "Ici c’est le groupe nocommon"
