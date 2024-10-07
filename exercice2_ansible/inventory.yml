@@ -1,0 +1,29 @@
+# ansible -i inventory.yml all -m debug -a 'msg={{ var1 }}'
+# ansible-inventory-grapher -i inventory.yml all | dot -Tpng | display png:-
+webserver:
+  hosts:
+    node2:
+    node3:
+dbserver:
+  hosts:
+    node4:
+    node5:
+appdocker:
+  hosts:
+    node6:
+common:
+  children:
+    webserver:
+    dbserver:
+    appdocker:
+nocommon:
+  hosts:
+    node8:
+    node9:
+    node10:
+monitoring:
+ hosts:
+  node7:
+ children:
+  webserver:
+  dbserver:
