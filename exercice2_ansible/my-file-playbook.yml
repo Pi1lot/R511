@@ -1,0 +1,53 @@
+--
+- name: Mon playbook
+  hosts: all
+  remote_user: toto
+  become: yes
+  tasks:
+  - name: je debug
+    debug:
+      msg: "La valeur de la variable est {{ var1 }}"
+
+  - name: Create a directory if it does not exist
+    ansible.builtin.file:
+     path: /home/toto/autodir
+     state: directory
+     mode: '0755'
+
+  - name: Recursively change ownership of a directory
+    ansible.builtin.file:
+     path: /home/toto/autodir
+     state: directory
+     recurse: yes
+     owner: root
+     group: root
+
+  - name: création des sous-répertoires avec with
+    file:
+     path: /tmp/{{item}}
+     state: directory
+    with_items:
+     - 1
+     - 2
+     - 3
+     - 4
+
+  - name: Touch a file, using symbolic modes to set the permissions (equivalent to 0644)
+    ansible.builtin.file:
+     path: /tmp/4/monfichier.txt
+     state: touch
+     mode: u=rw,g=r,o=r
+
+  - name: Create a symbolic link
+    ansible.builtin.file:
+     src: /tmp/4
+     dest: /home/toto/folder4
+     owner: toto
+     group: toto
+     state: link
+
+  - name: Remove file (delete file)
+    ansible.builtin.file:
+     path: /tmp/4/monfichier.txt
+     state: absent
+
