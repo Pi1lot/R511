@@ -1,3 +1,4 @@
+# ansible -i inventory.yml all -e "var1=Bonjour" -m debug -a 'msg={{ var1 }}'
 webserver:
   hosts:
     node2:
