@@ -1,0 +1,30 @@
+---
+- name: Configure Cisco Switch
+  hosts: switch
+  gather_facts: false
+  connection: ansible.netcommon.network_cli
+  tasks:
+    - name: Change the hostname to SW_DP
+      ios_config:
+        lines:
+          - hostname SW_DP
+
+    - name: Create VLAN 200
+      ios_config:
+        lines:
+          - vlan 200
+          - name VLAN_200
+
+    - name: Assign Ethernet0/1 to VLAN 200
+      ios_config:
+        parents: "interface Ethernet0/1"
+        lines:
+          - switchport mode access
+          - switchport access vlan 200
+
+    - name: Assign Ethernet0/2 to VLAN 200
+      ios_config:
+        parents: "interface Ethernet0/2"
+        lines:
+          - switchport mode access
+          - switchport access vlan 200

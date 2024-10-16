@@ -1,0 +1,32 @@
+---
+- name: AUTOMATIC BACKUP AND CONFIGURATION TASKS
+  hosts: router
+  gather_facts: false
+  connection: ansible.netcommon.network_cli
+
+  tasks:
+    - name: CREATE ios_show DIRECTORY IF NOT EXISTS
+      file:
+        path: "ios_show"
+        state: directory
+        mode: '0755'
+
+    - name: DISPLAYING A SUMMARY OF THE INTERFACES (show ip interface brief)
+      ios_command:
+        commands:
+          - show ip interface brief
+      register: config
+
+    - name: SAVE OUTPUT TO ./ios_show/
+      copy:
+        content: "{{ config.stdout[0] }}"
+        dest: "ios_show/show_ip_intr_br_{{ inventory_hostname }}.txt"
+
+    - name: CONFIGURE IPv4 INTERFACE
+      ios_config:
+        parents: "interface Ethernet0/2"
+        lines:
+          - description IPv4 ADDRESS
+          - ip address 10.10.10.1 255.255.255.0
+          - no shut
+

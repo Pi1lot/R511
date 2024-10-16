@@ -1,0 +1,22 @@
+---
+router:
+  hosts:
+    R1:
+      ansible_host: 192.168.248.130
+      ansible_network_os: cisco.ios.ios
+      ansible_user: toto
+      ansible_password: toto
+      ansible_become: yes
+      ansible_become_method: enable
+      ansible_become_password: toto
+
+switch:
+  hosts:
+    SW1:
+      ansible_host: 192.168.248.131
+      ansible_network_os: cisco.ios.ios
+      ansible_user: toto
+      ansible_password: toto
+      ansible_become: yes
+      ansible_become_method: enable
+      ansible_become_password: toto
